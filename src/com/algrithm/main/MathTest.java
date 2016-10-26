@@ -7,7 +7,7 @@ public class MathTest {
      */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        double result1 = Math.ceil(-0.09);
+        int result1 = 2/3;
         System.out.print(result1 + "\n");
     }
 

@@ -44,14 +44,12 @@ public class Heap {
             return;
         } // 如果左右儿子都存在
         else if (2 * index < n) {
-
             // 定义左儿子节点
             child = 2 * index;
             // 如果左儿子小于右儿子的数值，取右儿子的下标
             if ((Integer) heap.get(child) < (Integer) heap.get(child + 1)) {
                 child++;
             }
-
         }// 如果只有一个儿子（左儿子节点）
         else if (2 * index == n) {
             child = 2 * index;
@@ -187,21 +185,21 @@ public class Heap {
         int child;
         for (; i <= n / 2;) {
             child = i * 2;
-            if (child + 1 <= n && heap.get(child) < heap.get(child + 1))
+            if (child + 1 <= n && heap.get(child) < heap.get(child + 1)) {
                 child += 1;/* 使child指向值较大的孩子 */
+            }
             if (heap.get(i) < heap.get(child)) {
                 swap(heap, i, child);
                 /* 交换后，以child为根的子树不一定满足堆定义，所以从child处开始调整 */
                 i = child;
-
-            } else
+            } else {
                 break;
+            }
         }
     }
 
     // 对一个最大堆heap排序
     public static void heapSort(List<Integer> heap) {
-
         for (int i = heap.size() - 1; i > 0; i--) {
             /* 把根节点跟最后一个元素交换位置，调整剩下的n-1个节点，即可排好序 */
             swap(heap, 1, i);
