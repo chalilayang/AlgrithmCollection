@@ -1,6 +1,12 @@
 package com.algrithm.entity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
 public class BuildMaxHeap {
-    private static int[] input = new int[] {-1, 2322, 4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 23, 122, 432, 222, 0, 121};
+    private static int[] input = new int[] {-1, 2322, 4, 1, 5, 6, 11, 3, 2, 16, 9, 10, 14, 8, 7, 23, 122, 432, 222, 0, 121, 121};
     private static int heapSize = input.length;
 
     public static void main(String[] args) {
@@ -18,6 +24,36 @@ public class BuildMaxHeap {
         System.out.println("\n");
         System.out.println(" ÅÅĞòºó£º");
         printArray();
+        
+        List<Integer> heap = new ArrayList<Integer>(input.length);
+        for (int integer : input) {
+            heap.add(integer);
+        }
+        System.out.println("\n");
+        for (Integer integer : heap) {
+            System.out.print(integer + " ");
+        }
+//        for (Integer integer : heap) {
+//            if (integer.equals(122)) {
+//                heap.remove(integer);
+//            }
+//        }
+//        for (int index = 0, count = heap.size(); index < count; index ++) {
+//            if (heap.get(index) == 122) {
+//                heap.remove(index);
+//            }
+//        }
+        Iterator<Integer> iter = heap.iterator();
+        while(iter.hasNext()) {
+            Integer ff = iter.next();
+            if (ff % 2 == 0) {
+                iter.remove();
+            }
+        }
+        System.out.println("\n");
+        for (Integer integer : heap) {
+            System.out.print(integer + " ");
+        }
     }
 
     /**

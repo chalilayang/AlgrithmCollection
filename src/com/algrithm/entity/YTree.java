@@ -60,7 +60,7 @@ public class YTree {
             nodeList.clear();
         }
 
-        for (int nodeIndex = 0; nodeIndex < data.length; nodeIndex++) {
+        for (int nodeIndex = 0, count = data.length; nodeIndex < count; nodeIndex++) {
             nodeList.add(new Item(data[nodeIndex]));
         }
         for (int parentIndex = 0; parentIndex < data.length / 2 - 1; parentIndex++) {
