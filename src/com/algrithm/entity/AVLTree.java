@@ -1,8 +1,11 @@
 package com.algrithm.entity;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
+
+import com.algrithm.entity.YTree.Item;
 
 public class AVLTree {
 
@@ -24,10 +27,16 @@ public class AVLTree {
     
     public static void main(String[] args) {
         AVLTree tree = AVLTree.newInstance();
-        for (int index = 0; index < 200; index ++) {
+        for (int index = 0; index < 20; index ++) {
             tree.insert(index);
         }
-        List<Item> result = tree.getPreList();
+        List<Item> result = tree.getMidOrderList();
+        System.out.print("\n中序遍历：");
+        for (Item item : result) {
+            System.out.print(item.element + "  ");
+        }
+        result = tree.getPreList();
+        System.out.print("\n前序遍历：");
         for (Item item : result) {
             System.out.print(item.element + "  ");
         }
@@ -54,12 +63,67 @@ public class AVLTree {
         return searchMax(this.root);
     }
     
+    /**
+     * 非递归中序遍历
+     * 
+     * @param p
+     * @return
+     */
+    public List<Item> getMidOrderList() {
+        if (root == null) {
+            return null;
+        }
+        Stack<Item> stack = new Stack<Item>();
+        ArrayList<Item> result = new ArrayList<Item>();
+        Item p = root;
+        while (p != null || stack.size() > 0) {
+            while (p != null) {
+                stack.push(p);
+                p = p.leftChild;
+            }
+            if (stack.size() > 0) {
+                p = stack.pop();
+                result.add(p);
+                p = p.rightChild;
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * 非递归后序遍历
+     * 
+     * @param p
+     * @return
+     */
+    public List<Item> getBacOrderList() {
+        if (root == null) {
+            return null;
+        }
+        Stack<Item> stack = new Stack<Item>();
+        ArrayList<Item> result = new ArrayList<Item>();
+        Item p = root;
+        while (p != null || stack.size() > 0) {
+            while (p != null) {
+                stack.push(p);
+                if (p.rightChild != null) {
+                    stack.push(p.rightChild);
+                }
+                p = p.leftChild;
+            }
+            p = stack.pop();
+            result.add(p);
+            p = stack.pop();
+        }
+        return result;
+    }
+    
     public List<Item> getPreList() {
         if (root == null) {
             return null;
         }
         Stack<Item> stack = new Stack<Item>();
-        ArrayList<Item> result = new ArrayList<>();
+        ArrayList<Item> result = new ArrayList<Item>();
         Item p = root;
         if (p != null) {
             stack.push(p);

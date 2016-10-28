@@ -1,5 +1,6 @@
 package com.algrithm.entity;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -127,7 +128,7 @@ public class YTree {
      */
     public List<Item> getPreOrderList() {
         Stack<Item> stack = new Stack<Item>();
-        LinkedList<Item> result = new LinkedList<>();
+        ArrayList<Item> result = new ArrayList<Item>();
         Item p = mRoot;
         if (p != null) {
             stack.push(p);
@@ -162,7 +163,7 @@ public class YTree {
      */
     public List<Item> getMidOrderList() {
         Stack<Item> stack = new Stack<Item>();
-        LinkedList<Item> result = new LinkedList<>();
+        ArrayList<Item> result = new ArrayList<Item>();
         Item p = mRoot;
         while (p != null || stack.size() > 0) {
             while (p != null) {
@@ -197,7 +198,7 @@ public class YTree {
      */
     public List<Item> getBacOrderList() {
         Stack<Item> stack = new Stack<Item>();
-        LinkedList<Item> result = new LinkedList<>();
+        ArrayList<Item> result = new ArrayList<>();
         Item p = mRoot;
         while (p != null || stack.size() > 0) {
             while (p != null) {
